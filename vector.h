@@ -3,13 +3,11 @@
 //
 
 #include <vector>
+#include <iostream>
 #include "MyClass.h"
 
 #ifndef BENCHMARK_C_BEN_VECTOR_H
 #define BENCHMARK_C_BEN_VECTOR_H
-
-
-using test_cont = std::vector<int>;
 
 // ##################################
 //  Push back
@@ -92,8 +90,6 @@ const std::vector<T> &vector_random_access(int64_t count) {
 const std::vector<int> &vector_find_int(int64_t count) {
     std::vector<int> vec(count, 0);
 
-    vec[count - 1] = 1;
-
     auto it = std::find(vec.begin(), vec.end(), 1);
 
     return vec;
@@ -102,9 +98,6 @@ const std::vector<int> &vector_find_int(int64_t count) {
 const std::vector<MyClass> &vector_find_myType(int64_t count) {
     MyClass obj;
     std::vector<MyClass> vec(count, obj);
-
-    vec[count - 1].c = 1;
-    obj.c = 1;
 
     auto it = std::find(vec.begin(), vec.end(), obj);
 
@@ -221,12 +214,11 @@ BENCHMARK(vector_push_front_myType_reserve)->Arg(10000);
 //  Random access
 // ##################################
 
-void vector_random_access_int(benchmark::State &state) {
-    while (state.KeepRunning()) {
+static void vector_random_access_int(benchmark::State &state) {
+    for (auto _ : state)
         benchmark::DoNotOptimize(
                 vector_random_access<int>(state.range_x())
         );
-    }
 }
 
 void vector_random_access_myType(benchmark::State &state) {

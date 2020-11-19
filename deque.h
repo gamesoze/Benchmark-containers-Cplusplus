@@ -8,23 +8,20 @@
 #ifndef BENCHMARK_C_BEN_VECTOR_H
 #define BENCHMARK_C_BEN_VECTOR_H
 
-
-using test_cont = std::deque<int>;
-
 // ##################################
 //  Push back
 // ##################################
 
 template<typename T>
 const std::deque<T> &deque_push_back(int64_t count) {
-    std::deque<T> vec;
+    std::deque<T> deque;
     T obj;
 
     for (int i = 0; i < count; ++i) {
-        vec.push_back(obj);
+        deque.push_back(obj);
     }
 
-    return vec;
+    return deque;
 }
 
 // ##################################
@@ -33,14 +30,14 @@ const std::deque<T> &deque_push_back(int64_t count) {
 
 template<typename T>
 const std::deque<T> &deque_push_front(int64_t count) {
-    std::deque<T> vec;
+    std::deque<T> deque;
     T obj;
 
     for (int i = 0; i < count; ++i) {
-        vec.insert(vec.begin(), obj);
+        deque.insert(deque.begin(), obj);
     }
 
-    return vec;
+    return deque;
 }
 
 // ##################################
@@ -50,13 +47,13 @@ const std::deque<T> &deque_push_front(int64_t count) {
 template<typename T>
 const std::deque<T> &deque_random_access(int64_t count) {
     T obj;
-    std::deque<T> vec(count, obj);
+    std::deque<T> deque(count, obj);
 
     for (int i = 0; i < count; ++i) {
-        vec[i];
+        deque[i];
     }
 
-    return vec;
+    return deque;
 }
 
 // ##################################
@@ -64,25 +61,20 @@ const std::deque<T> &deque_random_access(int64_t count) {
 // ##################################
 
 const std::deque<int> &deque_find_int(int64_t count) {
-    std::deque<int> vec(count, 0);
+    std::deque<int> deque(count, 0);
 
-    vec[count - 1] = 1;
+    auto it = std::find(deque.begin(), deque.end(), 1);
 
-    auto it = std::find(vec.begin(), vec.end(), 1);
-
-    return vec;
+    return deque;
 }
 
 const std::deque<MyClass> &deque_find_myType(int64_t count) {
     MyClass obj;
-    std::deque<MyClass> vec(count, obj);
+    std::deque<MyClass> deque(count, obj);
 
-    vec[count - 1].c = 1;
-    obj.c = 1;
+    auto it = std::find(deque.begin(), deque.end(), obj);
 
-    auto it = std::find(vec.begin(), vec.end(), obj);
-
-    return vec;
+    return deque;
 }
 
 void deque_push_back_int(benchmark::State &state) {
