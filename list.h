@@ -8,9 +8,6 @@
 #ifndef BENCHMARK_C_BEN_VECTOR_H
 #define BENCHMARK_C_BEN_VECTOR_H
 
-
-using test_cont = std::list<int>;
-
 // ##################################
 //  Push back
 // ##################################
@@ -66,9 +63,6 @@ const std::list<T> &list_random_access(int64_t count) {
 const std::list<int> &list_find_int(int64_t count) {
     std::list<int> list(count, 0);
 
-    std::list<int>::iterator it_end = list.end();
-    *(--it_end) = 1;
-
     auto it = std::find(list.begin(), list.end(), 1);
 
     return list;
@@ -77,10 +71,6 @@ const std::list<int> &list_find_int(int64_t count) {
 const std::list<MyClass> &list_find_myType(int64_t count) {
     MyClass obj;
     std::list<MyClass> list(count, obj);
-
-    std::list<MyClass>::iterator it_end = list.end();
-    (--it_end)->c = 1;
-    obj.c = 1;
 
     auto it = std::find(list.begin(), list.end(), obj);
 

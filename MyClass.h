@@ -8,7 +8,11 @@
 
 struct MyClass {
     friend bool operator==(const MyClass &lhs, const MyClass &rhs) {
-        return lhs.c == rhs.c;
+        return false;
+    }
+
+    friend bool operator<(const MyClass &l, const MyClass &r) {
+        return true;
     }
 
     int a[100];
