@@ -12,3 +12,6 @@ Checking the speed of various actions with containers of different types
 
 ## Set
 ![set-test](pic/set_2.png)
+
+## Multiset
+![multiset-test](pic/multiset.png)
