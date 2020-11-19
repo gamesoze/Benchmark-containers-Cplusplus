@@ -73,9 +73,8 @@ const std::set<T> &set_random_access(const std::set<T> &setInput) {
 
 static void set_random_access_int(benchmark::State &state) {
     for (auto _ : state) {
-
         state.PauseTiming();
-        const std::set<int> &setInput = set_insert_int(state.range_x());
+        auto setInput = set_insert_int(state.range_x());
         state.ResumeTiming();
 
         benchmark::DoNotOptimize(
@@ -86,9 +85,8 @@ static void set_random_access_int(benchmark::State &state) {
 
 static void set_random_access_myType(benchmark::State &state) {
     for (auto _ : state) {
-
         state.PauseTiming();
-        const std::set<MyClass> &setInput = set_insert<MyClass>(state.range_x());
+        auto setInput = set_insert<MyClass>(state.range_x());
         state.ResumeTiming();
 
         benchmark::DoNotOptimize(
@@ -119,9 +117,8 @@ const std::set<T> &set_find(const std::set<T> &setInput) {
 
 static void set_find_int(benchmark::State &state) {
     for (auto _ : state) {
-
         state.PauseTiming();
-        const std::set<int> &setInput = set_insert_int(state.range_x());
+        auto setInput = set_insert_int(state.range_x());
         state.ResumeTiming();
 
         benchmark::DoNotOptimize(
@@ -132,9 +129,8 @@ static void set_find_int(benchmark::State &state) {
 
 static void set_find_myType(benchmark::State &state) {
     for (auto _ : state) {
-
         state.PauseTiming();
-        const std::set<MyClass> &setInput = set_insert<MyClass>(state.range_x());
+        auto setInput = set_insert<MyClass>(state.range_x());
         state.ResumeTiming();
 
         benchmark::DoNotOptimize(
