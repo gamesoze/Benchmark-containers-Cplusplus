@@ -9,3 +9,6 @@ Checking the speed of various actions with containers of different types
 
 ## Deque
 ![deque-test](pic/deque.png)
+
+## Set
+![set-test](pic/set.png)
