@@ -3,9 +3,12 @@
 //
 
 #include <benchmark/benchmark.h>
+
 //#include "vector.h"
 //#include "list.h"
 //#include "deque.h"
+
 //#include "set.h"
+#include "multiset.h"
 
 BENCHMARK_MAIN();
