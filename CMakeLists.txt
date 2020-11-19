@@ -6,6 +6,6 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_subdirectory(benchmark)
 
-add_executable(benchmark_c main.cpp ben_vector.h MyClass.h)
+add_executable(benchmark_c main.cpp vector.h MyClass.h list.h deque.h)
 
 target_link_libraries(benchmark_c benchmark)
